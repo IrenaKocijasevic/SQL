@@ -26,7 +26,13 @@ SELECT title FROM film
 WHERE length BETWEEN 60 AND 90
 
 8.Pronadji najkraći i najduži film
-SELECT MIN (length), MAX (length) FROM film
+SELECT MIN (length), MAX (length) FROM film   
+//ovde racuna samo min/max duzinu filma
+
+SELECT title, length FROM Film
+WHERE length =(SELECT MIN (length) FROM film) OR length = (SELECT MAX (length) FROM film)  
+//ovde ima podatak i o nazivu filma koji ima min/max duzinu
+
 9.Nadji moguce [null] vrednosti u adresama
 SELECT * FROM address
 WHERE address2 IS NULL
