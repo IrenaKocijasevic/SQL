@@ -1,0 +1,15 @@
+1 Query gets the average rental rate
+
+SELECT  AVG (rental_rate) FROM Film
+
+
+2 Rental rate is higher than the average rental rate
+
+SELECT film_id, title, rental_rate FROM Film
+WHERE rental_rate >2.98
+
+
+3. Create 1 query for 1 and 2 together
+
+SELECT film_id, title, rental_rate FROM Film
+WHERE rental_rate > (SELECT AVG (rental_rate) FROM film)
