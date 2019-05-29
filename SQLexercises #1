@@ -1,0 +1,36 @@
+1. Pronadji sve filmove sa rejtingom PG i PG-13
+SELECT * FROM film
+WHERE rating = 'PG' OR rating = 'PG-13'
+
+2.Pronadji sva razlicita imena glumaca
+SELECT DISTINCT first_name FROM actor
+
+3.Pronadji sve filmove sa rental_rate ispod 1
+SELECT * FROM film
+WHERE rental_rate < 1
+
+4.Pronadji sve mejlove neaktivnih kupaca
+SELECT email FROM customer
+WHERE active = 0
+
+5.Promeni ime drzave China u PRC
+UPDATE country
+SET country = 'PRC'
+WHERE country = 'China'
+
+6.Izračunaj koliko bi koštala zamena svih filmova
+SELECT SUM (replacement_cost) AS trosak_zamene FROM film
+
+7.Pronadji sve nazive filmova sa duzinom filma izmedju 60 i 90 minuta
+SELECT title FROM film
+WHERE length BETWEEN 60 AND 90
+
+8.Pronadji najkraći i najduži film
+SELECT MIN (length), MAX (length) FROM film
+9.Nadji moguce [null] vrednosti u adresama
+SELECT * FROM address
+WHERE address2 IS NULL
+
+10.Pronadji sva imena i prezimena kupaca koji su iz radnje 1 i adrese vece od 100
+SELECT first_name AS ime, last_name AS prezime FROM customer
+WHERE store_id = 1 AND address_id>100
