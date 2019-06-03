@@ -1,15 +1,39 @@
 1 Query gets the average rental rate
-
-SELECT  AVG (rental_rate) FROM Film
+  SELECT  AVG (rental_rate) FROM Film
 
 
 2 Rental rate is higher than the average rental rate
-
-SELECT film_id, title, rental_rate FROM Film
-WHERE rental_rate >2.98
+  SELECT film_id, title, rental_rate FROM Film
+  WHERE rental_rate >2.98
 
 
 3. Create 1 query for 1 and 2 together
+  SELECT film_id, title, rental_rate FROM Film
+  WHERE rental_rate > (SELECT AVG (rental_rate) FROM film)
 
-SELECT film_id, title, rental_rate FROM Film
-WHERE rental_rate > (SELECT AVG (rental_rate) FROM film)
+
+4. Query finds all pair of films that have the same length
+  SELECT f1.title, f2.title, f1.length FROM film f1
+  INNER JOIN film f2 ON 
+  f1.film_id <> f2.film_id AND f1.length = f2.length;
+  
+5. Query to get the first 5 films (title, release year, id) ordered by film_id
+  SELECT title, release_year, film_id FROM film
+  ORDER BY film_id limit 5;
+  
+6. Query to retrieve 4 films starting from the third one ordered by film_id
+  SELECT title, release_year, film_id
+  FROM film
+  ORDER BY film_id limit 4 OFFSET 2;
+  
+7. Querry to get top 10 most rented films
+  SELECT title, rental_rate
+  FROM film
+  ORDER BY rental_rate DESC limit 10
+  
+ 8. Query that returns the maximum length of film grouped by film category
+  SELECT  category.name, MAX( length ) FROM (( film INNER JOIN film_category USING(film_id))
+  INNER JOIN category USING(category_id))
+  GROUP BY category_id;
+
+
