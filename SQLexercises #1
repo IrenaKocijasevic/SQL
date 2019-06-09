@@ -48,7 +48,7 @@ SELECT f.title, c.name FROM
 WHERE f.title LIKE 'A%' AND c.name LIKE 'A%'
 
 12. Prikaži sve filmove id, film naziv i inventory ID
-SELECT f.film_id, f.title, inventory_id FROM film f
+SELECT f.film_id, f.title, i.inventory_id FROM film f
 LEFT JOIN inventory i ON i.film_id = f.film_id;
 
 13. Prikazi customer_id, ime i prezime, email i payment_date
