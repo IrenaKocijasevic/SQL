@@ -42,10 +42,10 @@ SELECT first_name AS ime, last_name AS prezime FROM customer
 WHERE store_id = 1 AND address_id>100
 
 11. Prikazi sve filmove i njihove kategorije koji pocinju sa slovom A
-SELECT film.title AS Filmovi, category.name AS Kategorije FROM 
-            ((film INNER JOIN film_category ON film.film_id=film_category.film_id)
-INNER JOIN category ON film_category.category_id=category.category_id)
-WHERE film.title LIKE 'A%' AND category.name LIKE 'A%'
+SELECT f.title, c.name FROM 
+   ((film f INNER JOIN film_category fc ON f.film_id=fc.film_id)
+            INNER JOIN category c ON fc.category_id=c.category_id)
+WHERE f.title LIKE 'A%' AND c.name LIKE 'A%'
 
 12. Prikaži sve filmove id, film naziv i inventory ID
 SELECT f.film_id, f.title, inventory_id FROM film f
